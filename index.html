@@ -1,348 +1,801 @@
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Haasini | Personal Portfolio</title>
-
-    <link rel="stylesheet" href="style.css">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Haasini Cheerla — Creative Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
+<style>
+:root {
+ --plum:#451C34;
+ --violet:#865991;
+ --lavender:#C2A6CC;
+ --orange:#F8986E;
+ --rust:#D05B39;
+ --gold:#D4AF70;
+ --paper:#FAF7FA;
+ --white:#FFFFFF;
+ --muted:#806C80;
+ --line:rgba(69,28,52,.18);
+ --serif:'Playfair Display',Georgia,serif;
+ --sans:'DM Sans',Arial,sans-serif;
+ --mono:'DM Mono',monospace;}
+* {box-sizing:border-box;}
+html {scroll-behavior:smooth;scroll-padding-top:90px;}
+body {
+ margin:0;
+ background:var(--paper);
+ color:var(--plum);
+ font-family:var(--sans);
+ overflow-x:hidden;}
+a {
+ color:inherit;
+ text-decoration:none;}
+::selection {
+ background:var(--lavender);
+ color:var(--plum);}
+.wrap {
+ width:min(1190px,calc(100% - 48px));
+ margin:auto;}
+/* NAVIGATION */
+.topbar {
+ height:76px;
+ display:flex;
+ align-items:center;
+ position:sticky;
+ top:0;
+ z-index:50;
+ background:rgba(250,247,250,.94);
+ backdrop-filter:blur(16px);
+ border-bottom:1px solid var(--line);}
+.nav {
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ gap:20px;}
+.logo {
+ font-weight:800;
+ letter-spacing:.17em;
+ font-size:.85rem;}
+.logo b {
+ color:var(--rust);}
+.navlinks {
+ display:flex;
+ align-items:center;
+ gap:27px;
+ font-size:.78rem;
+ color:var(--muted);}
+.navlinks a {
+ transition:color .2s;}
+.navlinks a:hover {
+ color:var(--rust);}
+/* HOME */
+.hero {
+ min-height:650px;
+ padding:100px 0;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ text-align:center;
+ position:relative;}
+.hero-content {
+ width:100%;
+ max-width:850px;
+ margin:auto;}
+.kicker,
+.eyebrow {
+ font:500 .67rem var(--mono);
+ letter-spacing:.16em;
+ text-transform:uppercase;
+ color:var(--rust);}
+.kicker {
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ gap:12px;}
+.kicker:before,
+.kicker:after {
+ content:"";
+ width:32px;
+ height:1px;
+ background:var(--gold);}
+.hero h1 {
+ font:500 clamp(4rem,9vw,8rem)/.95 var(--serif);
+ letter-spacing:-.065em;
+ margin:30px 0;}
+.hero h1 em {
+ color:var(--rust);
+ font-weight:500;}
+.hero-copy {
+ max-width:550px;
+ margin:0 auto;
+ color:var(--muted);
+ font-size:1rem;
+ line-height:1.9;}
+.hero-actions {
+ display:flex;
+ justify-content:center;
+ gap:13px;
+ flex-wrap:wrap;
+ margin-top:32px;}
+.btn {
+ display:inline-flex;
+ align-items:center;
+ gap:12px;
+ padding:13px 19px;
+ border:1px solid var(--plum);
+ font-weight:700;
+ font-size:.77rem;
+ transition:.25s;}
+.btn.primary {
+ background:var(--plum);
+ color:var(--white);}
+.btn:hover {
+ transform:translateY(-3px);
+ box-shadow:4px 4px 0 var(--gold);}
+.hero-small {
+ font:.65rem var(--mono);
+ color:var(--muted);
+ letter-spacing:.12em;
+ margin-top:40px;}
+/* MARQUEE */
+.marquee {
+ background:var(--plum);
+ color:var(--paper);
+ padding:14px 0;
+ overflow:hidden;
+ white-space:nowrap;}
+.marquee-track {
+ display:inline-block;
+ animation:marquee 30s linear infinite;
+ font:italic 1.05rem var(--serif);}
+.marquee span {
+ color:var(--gold);
+ padding:0 24px;}
+@keyframes marquee {
+ to {transform:translateX(-50%);}}
+/* GENERAL SECTIONS */
+.section {
+ padding:100px 0;}
+.section-top {
+ display:flex;
+ justify-content:space-between;
+ align-items:end;
+ gap:30px;
+ margin-bottom:40px;}
+.section-title {
+ font:500 clamp(2.6rem,5.5vw,5rem)/1 var(--serif);
+ letter-spacing:-.045em;
+ margin:12px 0 0;}
+.section-intro {
+ max-width:330px;
+ color:var(--muted);
+ font-size:.88rem;
+ line-height:1.8;}
+/* ABOUT */
+.about-copy {
+ background:var(--white);
+ border:1px solid var(--line);
+ padding:clamp(30px,5vw,60px);
+ display:flex;
+ flex-direction:column;
+ justify-content:center;
+ max-width:900px;}
+.about-copy p {
+ color:var(--muted);
+ line-height:2;
+ font-size:.96rem;}
+.about-copy p:first-child {
+ margin-top:0;}
+.about-copy strong {
+ color:var(--plum);}
+/* EDUCATION */
+.education {
+ background:var(--lavender);}
+.education .section-top {
+ margin-bottom:45px;}
+.education .eyebrow { color:var(--plum);}
+.education .section-title {
+ color:var(--plum);}
+.education .section-intro {
+ color:var(--plum);}
+.education-grid {
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:25px;
+ align-items:center;}
+.edu-card {
+ background:var(--white);
+ padding:30px;
+ border-radius:12px;
+ box-shadow:0 5px 0 var(--gold);}
+.edu-card:first-child {
+ align-self:start;}
+.edu-card:last-child {
+ align-self:center;}
+.edu-status {
+ font-size:.9rem;
+ color:var(--plum);
+ margin-bottom:10px;}
+.edu-card h3 {
+ font:600 1.3rem var(--serif);
+ line-height:1.4;
+ margin:8px 0 12px;}
+.edu-card strong {
+ display:block;
+ font-size:.9rem;
+ margin-bottom:5px;}
+.edu-location {
+ color:var(--violet);
+ font-size:.9rem;
+ margin:5px 0;}
+.edu-description {
+ color:var(--violet);
+ font-size:.91rem;
+ line-height:1.8;
+ margin:8px 0 25px;}
+.edu-subjects {
+ margin-top:25px;}
+.edu-subjects h4 {
+ font:600 1rem var(--serif);
+ margin:0 0 10px;
+ padding-bottom:10px;
+ border-bottom:1px solid var(--gold);}
+.subject-tags {
+ display:flex;
+ flex-wrap:wrap;
+ gap:8px;
+ margin-bottom:25px;}
+.subject-tags span {
+ background:var(--lavender);
+ color:var(--plum);
+ padding:8px 13px;
+ border-radius:30px;
+ font-size:.69rem;
+ font-weight:500;}
+/* SKILLS */
+.skill-grid {
+ display:grid;
+ grid-template-columns:repeat(4,1fr);
+ gap:11px;}
+.skill {
+ min-height:150px;
+ padding:20px;
+ background:var(--white);
+ border:1px solid var(--line);
+ display:flex;
+ flex-direction:column;
+ justify-content:space-between;
+ position:relative;
+ overflow:hidden;}
+.skill:after {
+ content:"";
+ position:absolute;
+ width:85px;
+ height:85px;
+ border-radius:50%;
+ background:var(--lavender);
+ right:-38px;
+ bottom:-40px;}
+.skill small {
+ font:.62rem var(--mono);
+ color:var(--rust);}
+.skill strong {
+ font:500 1.2rem var(--serif);
+ max-width:150px;
+ position:relative;
+ z-index:1;}
+.skill:nth-child(2n) small {
+ color:var(--violet);}
+/* PROJECTS */
+.projects-section {
+ background:var(--plum);
+ color:var(--paper);}
+.projects-section .eyebrow {
+ color:var(--gold);}
+.projects-section .section-intro {
+ color:#D9C8D9;}
+.project-grid {
+ display:grid;
+ grid-template-columns:repeat(2,1fr);
+ gap:18px;}
+.project-card {
+ background:var(--paper);
+ color:var(--plum);
+ overflow:hidden;
+ transition:.3s;}
+.project-card:hover {
+ transform:translateY(-5px);
+ box-shadow:7px 7px 0 var(--gold);}
+.project-info {
+ min-height:210px;
+ padding:35px 25px;
+ display:flex;
+ flex-direction:column;
+ justify-content:center;
+ align-items:center;
+ text-align:center;
+ gap:13px;}
+.project-info small {
+ font:.62rem var(--mono);
+ color:var(--rust);
+ letter-spacing:.13em;
+ text-transform:uppercase;}
+.project-info h3 {
+ font:500 1.7rem var(--serif);
+ margin:10px 0;}
+.project-info p {
+ font-size:.83rem;
+ color:var(--muted);
+ max-width:300px;
+ line-height:1.7;
+ margin:0;}
+.project-arrow {
+ font-size:1.2rem;
+ margin-top:5px;
+ color:var(--violet);}
+/* THANK YOU / CONTACT */
+.contact-section {
+ background:var(--plum);
+ color:var(--paper);
+ text-align:center;
+ padding:100px 24px 120px;}
+.contact-inner {
+ max-width:1000px;
+ margin:auto;}
+.contact-section .eyebrow {
+ color:var(--gold);}
+.contact-section h2 {
+ font:500 clamp(2.8rem,6vw,5.5rem)/1.1 var(--serif);
+ color:var(--gold);
+ margin:20px 0 30px;}
+.contact-line {
+ width:110px;
+ height:5px;
+ background:var(--gold);
+ margin:35px auto 65px;}
+.contact-section p {
+ font-size:1.05rem;
+ line-height:1.9;
+ margin:20px 0;
+ color:var(--white);}
+.contact-email {
+ display:inline-block;
+ color:var(--orange);
+ font-weight:600;
+ transition:.2s;}
+.contact-email:hover {
+ color:var(--gold);}
+/* FOOTER */
+footer {
+ background:var(--plum);
+ border-top:1px solid rgba(255,255,255,.15);
+ padding:25px 0;
+ font:.65rem var(--mono);
+ letter-spacing:.08em;
+ color:#D9C8D9;}
+.footer-row {
+ display:flex;
+ justify-content:space-between;
+ gap:15px;}
+/* ANIMATIONS */
+.reveal {
+ opacity:0;
+ transform:translateY(25px);
+ transition:opacity .7s ease,transform .7s ease;}
+.reveal.visible {
+ opacity:1;
+ transform:translateY(0);}
+@media(prefers-reduced-motion:reduce) {
+ *,
+ *:before,
+ *:after {
+  animation:none!important;
+  transition:none!important;
+  scroll-behavior:auto!important;}
+ .reveal {
+  opacity:1;
+  transform:none;}}
+/* TABLET */
+@media(max-width:850px) {
+ .hero {
+  min-height:550px;}
+ .education-grid {
+  grid-template-columns:1fr;}
+ .skill-grid {
+  grid-template-columns:repeat(2,1fr);}}
+/* MOBILE */
+@media(max-width:600px) {
+ .wrap {
+  width:calc(100% - 30px);}
+ .topbar {
+  height:65px;}
+ .navlinks {
+  gap:12px;
+  font-size:.67rem;}
+ .navlinks a:nth-child(2),
+ .navlinks a:nth-child(3) {
+  display:none;}
+ .hero {
+  min-height:530px;
+  padding:65px 0;}
+ .hero h1 {
+  font-size:clamp(3.7rem,16vw,5.4rem);}
+ .hero-copy {
+  font-size:.9rem;}
+ .section {
+  padding:70px 0;}
+ .section-top {
+  display:block;}
+ .section-intro {
+  margin-top:15px;}
+ .edu-card {
+  padding:23px;}
+ .edu-card h3 {
+  font-size:1.2rem;}
+ .skill {
+  min-height:125px;
+  padding:15px;}
+ .skill strong {
+  font-size:1.05rem;}
+ .project-grid {
+  grid-template-columns:1fr;}
+ .project-info {
+  min-height:185px;
+  padding:25px 18px;}
+ .project-info h3 {
+  font-size:1.45rem;}
+ .contact-section {
+  padding:75px 20px;}
+ .contact-section p {
+  font-size:.9rem;}
+ .footer-row {
+  display:block;
+  line-height:2;}}
+</style>
 </head>
-
 <body>
-
-    <!-- NAVIGATION BAR -->
-    <header>
-
-        <div class="logo">HAASINI.</div>
-
-        <nav>
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#education">Education</a>
-            <a href="#skills">Skills</a>
-            <a href="#projects">Projects</a>
-            <a href="#contact">Contact</a>
-        </nav>
-
-    </header>
-
-
-    <!-- HOME SECTION -->
-    <section id="home">
-
-        <h3>WELCOME TO MY PORTFOLIO</h3>
-
-        <h1>Hello, I'm <span>Haasini</span></h1>
-
-        <h3>Fashion Technology Student | Creative Explorer</h3>
-
-        <p>
-            Exploring the intersection of fashion, creativity,
-            technology and innovation. I enjoy transforming
-            ideas into meaningful designs and experiences.
-        </p>
-
-        <a href="#about" class="btn">Discover More</a>
-
-    </section>
-
-
-    <!-- ABOUT ME SECTION -->
-    <section id="about">
-
-        <h2 class="section-title">About Me</h2>
-
-        <div class="about-content">
-
-            <p>
-                I am a Fashion Technology student at NIFT Bangalore
-                with a strong interest in fashion, creativity and
-                innovation. I enjoy drawing, painting and exploring
-                new ideas through design.
-
-                I am also interested in understanding how technology
-                and business can transform the fashion industry.
-                I aim to develop my creative and technical skills
-                while exploring new opportunities and experiences.
-            </p>
-
-        </div>
-
-    </section>
-
-
-    <!-- EDUCATION SECTION -->
-    <section id="education">
-
-        <h2 class="section-title">My Education</h2>
-
-        <div class="education-container">
-
-
-            <!-- NIFT EDUCATION -->
-            <div class="education-card">
-
-                <span class="education-year">Currently Pursuing</span>
-
-                <h3>Bachelor's in Fashion Technology</h3>
-
-                <h4>
-                    National Institute of Fashion Technology (NIFT)
-                </h4>
-
-                <p class="education-location">
-                    Bangalore, Karnataka
-                </p>
-
-                <p>
-                    Studying Fashion Technology with a focus on
-                    apparel manufacturing, garment construction,
-                    textile science, fashion design, technology
-                    and management.
-
-                    The programme helps develop both technical
-                    knowledge and an understanding of the
-                    fashion business.
-                </p>
-
-
-                <!-- TECHNICAL SUBJECTS -->
-                <h4 class="subject-heading">
-                    Technical & Design Subjects
-                </h4>
-
-                <div class="education-topics">
-
-                    <span>Textile Science</span>
-
-                    <span>Garment Construction</span>
-
-                    <span>Apparel Manufacturing</span>
-
-                    <span>Pattern Making</span>
-
-                    <span>Fashion Illustration</span>
-
-                    <span>Elements of Technology</span>
-
-                    <span>Quality Control</span>
-
-                    <span>Computer Applications</span>
-
-                </div>
-
-
-                <!-- MANAGEMENT SUBJECTS -->
-                <h4 class="subject-heading">
-                    Management & Business Subjects
-                </h4>
-
-                <div class="education-topics">
-
-                    <span>Principles of Management</span>
-
-                    <span>Marketing Management</span>
-
-                    <span>Entrepreneurial Mindset & Awareness</span>
-
-                    <span>Supply Chain Management</span>
-
-                    <span>Production Planning</span>
-
-                    <span>Costing & Merchandising</span>
-
-                    <span>Business Communication</span>
-
-                    <span>Organisational Management</span>
-
-                </div>
-
-            </div>
-
-
-            <!-- IIM BANGALORE EDUCATION -->
-            <div class="education-card">
-
-                <span class="education-year">Currently Pursuing</span>
-
-                <h3>BBA in Digital Business & Entrepreneurship</h3>
-
-                <h4>
-                    Indian Institute of Management Bangalore
-                </h4>
-
-                <p class="education-location">
-                    Online Programme
-                </p>
-
-                <p>
-                    Exploring digital business, entrepreneurship,
-                    innovation and business fundamentals.
-
-                    The programme provides an opportunity to
-                    understand how businesses are developed,
-                    managed and expanded in the digital economy.
-                </p>
-
-                <h4 class="subject-heading">
-                    Areas of Learning
-                </h4>
-
-                <div class="education-topics">
-
-                    <span>Entrepreneurship</span>
-
-                    <span>Digital Business</span>
-
-                    <span>Business Innovation</span>
-
-                    <span>Marketing</span>
-
-                    <span>Business Strategy</span>
-
-                    <span>Digital Economy</span>
-
-                </div>
-
-            </div>
-
-
-        </div>
-
-    </section>
-
-
-    <!-- SKILLS SECTION -->
-    <section id="skills">
-
-        <h2 class="section-title">My Skills</h2>
-
-        <div class="skills-container">
-
-            <div class="skill">Fashion Illustration</div>
-
-            <div class="skill">Creative Design</div>
-
-            <div class="skill">HTML & CSS</div>
-
-            <div class="skill">Photography</div>
-
-            <div class="skill">Drawing & Painting</div>
-
-            <div class="skill">Communication</div>
-
-            <div class="skill">Creative Thinking</div>
-
-            <div class="skill">Problem Solving</div>
-
-        </div>
-
-    </section>
-
-
-    <!-- PROJECTS SECTION -->
-    <section id="projects">
-
-        <h2 class="section-title">My Projects</h2>
-
-        <div class="projects-container">
-
-
-            <div class="project-card">
-
-                <h3>Fashion Design</h3>
-
-                <p>
-                    Exploring garment design, silhouettes,
-                    fabrics and creative fashion concepts
-                    through design development.
-                </p>
-
-            </div>
-
-
-            <div class="project-card">
-
-                <h3>Sustainable Fashion</h3>
-
-                <p>
-                    Developing ideas that explore textile waste
-                    reduction, material reuse and sustainable
-                    fashion practices.
-                </p>
-
-            </div>
-
-
-            <div class="project-card">
-
-                <h3>Fashion Technology</h3>
-
-                <p>
-                    Exploring the use of technology and innovation
-                    in garment manufacturing and the fashion industry.
-                </p>
-
-            </div>
-
-
-            <div class="project-card">
-
-                <h3>Creative Concepts</h3>
-
-                <p>
-                    Developing creative ideas and concepts that
-                    combine design thinking, creativity
-                    and problem solving.
-                </p>
-
-            </div>
-
-
-        </div>
-
-    </section>
-
-
-    <!-- CONTACT SECTION -->
-    <section id="contact">
-
-        <h2 class="section-title">Get In Touch</h2>
-
-        <p>Thank you for visiting my portfolio!</p>
-
-        <p>
-            I am always open to learning, connecting
-            and exploring creative opportunities.
-        </p>
-
-        <p>
-            Email:
-            <a href="mailto:YOUR_EMAIL_ADDRESS">
-                cheerla.haasini@nift.ac.in
-            </a>
-        </p>
-
-    </section>
-
-
-    <!-- FOOTER -->
-    <footer>
-
-        <p>
-            © 2026 <span>Haasini</span> |
-            Personal Portfolio Website
-        </p>
-
-    </footer>
-
-
+<!-- NAVIGATION -->
+<header class="topbar">
+ <div class="wrap nav">
+  <a class="logo" href="#home">
+   HAASINI<b>✳</b>
+  </a>
+  <nav class="navlinks" aria-label="Main navigation">
+   <a href="#home">Home</a>
+   <a href="#about">About</a>
+   <a href="#education">Education</a>
+   <a href="#skills">Skills</a>
+   <a href="#projects">Projects</a>
+   <a href="#contact">Contact</a>
+  </nav>
+ </div>
+</header>
+<main>
+<!-- HOME -->
+<section class="wrap hero" id="home">
+ <div class="hero-content reveal">
+  <div class="kicker">
+   Fashion technology · Creative mind
+  </div>
+  <h1>
+   Hi, I'm<br>
+   <em>Haasini.</em>
+  </h1>
+  <p class="hero-copy">A fashion technology student with a curious mind,a love for visual stories and a soft spot for thoughtful details.Always sketching, exploring and imagining what comes next.</p>
+  <div class="hero-actions">
+   <a class="btn primary" href="#projects">
+    Explore my world <span>↗</span>
+   </a>
+   <a class="btn" href="#about">
+    Get to know me <span>↓</span>
+   </a>
+  </div>
+  <div class="hero-small">
+   BASED IN BENGALURU · OPEN TO CREATIVE CONNECTIONS
+  </div>
+ </div>
+</section>
+<!-- MOVING TEXT -->
+<div class="marquee">
+ <div class="marquee-track">
+  MADE OF IDEAS <span>✳</span>
+  DRAW · DESIGN · DISCOVER <span>✳</span>
+  FASHION WITH A POINT OF VIEW <span>✳</span>
+  ALWAYS CREATING <span>✳</span>
+  MADE OF IDEAS <span>✳</span>
+  DRAW · DESIGN · DISCOVER <span>✳</span>
+  FASHION WITH A POINT OF VIEW <span>✳</span>
+  ALWAYS CREATING <span>✳</span>
+ </div>
+</div>
+<!-- ABOUT -->
+<section class="section wrap" id="about">
+ <div class="section-top reveal">
+  <div>
+   <div class="eyebrow">
+    01 — A little introduction
+   </div>
+   <h2 class="section-title">
+    More than a<br>
+    <em>creative mind.</em>
+   </h2>
+  </div>
+  <p class="section-intro">
+   I like ideas that make people pause, details that tell a story
+   and projects that let me learn something new.
+  </p>
+ </div>
+ <div class="about-copy reveal">
+  <p>
+   I'm a <strong>Fashion Technology student at NIFT Bengaluru</strong>,
+   interested in drawing, painting, fashion and innovation.
+  </p>
+  <p>
+   I enjoy exploring how an idea moves from a first sketch to a finished piece.
+   From silhouettes and materials to colour stories and construction,
+   I'm drawn to the details that make design feel personal.
+  </p>
+  <p>
+   I'm also pursuing a
+   <strong>BBA in Digital Business & Entrepreneurship through IIM Bangalore's
+   online programme</strong>, bringing creative thinking and business curiosity together.
+  </p>
+ </div>
+</section>
+<!-- EDUCATION -->
+<section class="section education" id="education">
+ <div class="wrap">
+  <div class="section-top reveal">
+   <div>
+    <div class="eyebrow">
+     02 — Education
+    </div>
+    <h2 class="section-title">
+     My learning<br>
+     journey.
+    </h2>
+   </div>
+   <p class="section-intro">
+    Building my knowledge through fashion, creativity and business.
+   </p>
+  </div>
+  <div class="education-grid">
+   <!-- FASHION TECHNOLOGY -->
+   <article class="edu-card reveal">
+    <div class="edu-status">
+     Currently Pursuing
+    </div>
+    <h3>Bachelor's in Fashion Technology</h3>
+    <strong>National Institute of Fashion Technology (NIFT)</strong>
+    <div class="edu-location">Bangalore, Karnataka</div>
+    <p class="edu-description">Studying Fashion Technology with a focus on apparel manufacturing,garment construction, textile science, fashion design, technologyand management. The programme helps develop both technical knowledgeand an understanding of the fashion business.</p>
+    <div class="edu-subjects">
+     <h4>Technical & Design Subjects</h4>
+     <div class="subject-tags">
+      <span>Textile Science</span>
+      <span>Garment Construction</span>
+      <span>Apparel Manufacturing</span>
+      <span>Pattern Making</span>
+      <span>Fashion Illustration</span>
+      <span>Elements of Technology</span>
+      <span>Quality Control</span>
+      <span>Computer Applications</span>
+     </div>
+    </div>
+    <div class="edu-subjects">
+     <h4>
+      Management & Business Subjects
+     </h4>
+     <div class="subject-tags">
+      <span>Principles of Management</span>
+      <span>Marketing Management</span>
+      <span>Entrepreneurial Mindset & Awareness</span>
+      <span>Supply Chain Management</span>
+      <span>Production Planning</span>
+      <span>Costing & Merchandising</span>
+      <span>Business Communication</span>
+      <span>Organisational Management</span>
+     </div>
+    </div>
+   </article>
+   <!-- DIGITAL BUSINESS -->
+   <article class="edu-card reveal">
+    <div class="edu-status">
+     Currently Pursuing
+    </div>
+    <h3>
+     BBA in Digital Business & Entrepreneurship
+    </h3>
+    <strong>
+     Indian Institute of Management Bangalore
+    </strong>
+    <div class="edu-location">
+     Online Programme
+    </div>
+    <p class="edu-description">
+     Exploring digital business, entrepreneurship, innovation and businessfundamentals. The programme provides an opportunity to understandhow businesses are developed, managed and expanded in the digital economy.
+    </p>
+    <div class="edu-subjects">
+     <h4>Areas of Learning
+     </h4>
+     <div class="subject-tags">
+      <span>Entrepreneurship</span>
+      <span>Digital Business</span>
+      <span>Business Innovation</span>
+      <span>Marketing</span>
+      <span>Business Strategy</span>
+      <span>Digital Economy</span>
+     </div>
+    </div>
+   </article>
+  </div>
+ </div>
+</section>
+<!-- SKILLS -->
+<section class="section wrap" id="skills">
+ <div class="section-top reveal">
+  <div>
+   <div class="eyebrow">
+    03 — My creative toolkit
+   </div>
+   <h2 class="section-title">
+    A few things<br>
+    I bring to the table.
+   </h2>
+  </div>
+  <p class="section-intro">
+   A blend of visual creativity, practical skills and thoughtful problem-solving.
+  </p>
+ </div>
+ <div class="skill-grid">
+  <div class="skill reveal">
+   <small>01 / VISUAL</small>
+   <strong>Fashion Illustration</strong>
+  </div>
+  <div class="skill reveal">
+   <small>02 / DESIGN</small>
+   <strong>Creative Design</strong>
+  </div>
+  <div class="skill reveal">
+   <small>03 / DIGITAL</small>
+   <strong>HTML & CSS</strong>
+  </div>
+  <div class="skill reveal">
+   <small>04 / STORY</small>
+   <strong>Photography</strong>
+  </div>
+  <div class="skill reveal">
+   <small>05 / ART</small>
+   <strong>Drawing & Painting</strong>
+  </div>
+  <div class="skill reveal">
+   <small>06 / PEOPLE</small>
+   <strong>Communication</strong>
+  </div>
+  <div class="skill reveal">
+   <small>07 / IDEAS</small>
+   <strong>Creative Thinking</strong>
+  </div>
+  <div class="skill reveal">
+   <small>08 / LOGIC</small>
+   <strong>Problem Solving</strong>
+  </div>
+ </div>
+</section>
+<!-- PROJECTS -->
+<section class="section projects-section" id="projects">
+ <div class="wrap">
+  <div class="section-top reveal">
+   <div>
+    <div class="eyebrow">
+     04 — Areas I love exploring
+    </div>
+    <h2 class="section-title">
+     The fun part<br>
+     is making.
+    </h2>
+   </div>
+   <p class="section-intro">A glimpse into the creative directions that inspire me More projects and experiments will find their place here.
+   </p>
+  </div>
+  <div class="project-grid">
+   <article class="project-card reveal">
+    <div class="project-info">
+     <div>
+      <small>Shape & silhouette</small>
+      <h3>Fashion Design</h3>
+      <p>
+       Exploring garment ideas, details, proportions and personal style.
+      </p>
+     </div>
+     <span class="project-arrow">↗</span>
+    </div>
+   </article>
+   <article class="project-card reveal">
+    <div class="project-info">
+     <div>
+      <small>Mindful making</small>
+      <h3>Sustainable Fashion</h3>
+      <p>
+       Discovering thoughtful materials and more responsible design choices.
+      </p>
+     </div>
+     <span class="project-arrow">↗</span>
+    </div>
+   </article>
+   <article class="project-card reveal">
+    <div class="project-info">
+     <div>
+      <small>From idea to object</small>
+      <h3>Fashion Technology</h3>
+      <p>
+       Connecting design creativity with garment construction and technique.
+      </p>
+     </div>
+     <span class="project-arrow">↗</span>
+    </div>
+   </article>
+   <article class="project-card reveal">
+    <div class="project-info">
+     <div>
+      <small>Visual experiments</small>
+      <h3>Creative Concepts</h3>
+      <p>
+       Turning inspiration, observations and imagination into fresh ideas.
+      </p>
+     </div>
+     <span class="project-arrow">↗</span>
+    </div>
+   </article>
+  </div>
+ </div>
+</section>
+<!-- THANK YOU / CONTACT -->
+<section class="contact-section" id="contact">
+ <div class="contact-inner reveal">
+  <div class="eyebrow">
+   THANK YOU FOR BEING HERE
+  </div>
+  <h2>
+   Thank you for visiting<br>
+   my portfolio!
+  </h2>
+  <div class="contact-line"></div>
+  <p>Thank you for visiting my portfolio!
+  </p>
+  <p>I am always open to learning, connecting and exploring creative opportunities.
+  </p>
+  <p>Email:
+   <a class="contact-email" href="mailto:cheerla.haasini@nift.ac.in">cheerla.haasini@nift.ac.in
+   </a>
+  </p>
+ </div>
+</section>
+</main>
+<!-- FOOTER -->
+<footer>
+ <div class="wrap footer-row">
+  <span>
+   © 2026 HAASINI CHEERLA
+  </span>
+  <span>
+   DESIGNED WITH CURIOSITY & A LITTLE EXTRA ✳
+  </span>
+ </div>
+</footer>
+<!-- SCROLL REVEAL SCRIPT -->
+<script>
+const observer = new IntersectionObserver(entries => {
+ entries.forEach(entry => {
+  if(entry.isIntersecting) {
+   entry.target.classList.add('visible');
+   observer.unobserve(entry.target);}});}, {
+ threshold:.12});
+document.querySelectorAll('.reveal').forEach(el => {
+ observer.observe(el);});
+</script>
 </body>
 </html>
